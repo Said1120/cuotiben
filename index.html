@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中考错题本</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <h1>中考错题本</h1>
+      <p>按科目整理错题，记录原因和复习状态。</p>
+    </div>
+    <button id="backHomeBtn" class="ghost-button hidden">返回首页</button>
+  </header>
+
+  <main>
+    <section id="homeView">
+      <h2>选择科目</h2>
+      <div id="subjectGrid" class="subject-grid"></div>
+    </section>
+
+    <section id="subjectView" class="hidden">
+      <div class="section-title">
+        <div>
+          <h2 id="subjectTitle">数学错题</h2>
+          <p id="subjectCount">共 0 道错题</p>
+        </div>
+        <button id="showFormBtn" class="primary-button">新增错题</button>
+      </div>
+
+      <form id="questionForm" class="question-form hidden">
+        <h3>新增错题</h3>
+
+        <label>
+          题型
+          <select id="typeInput" required>
+            <option value="">请选择题型</option>
+            <option value="选择题">选择题</option>
+            <option value="填空题">填空题</option>
+            <option value="解答题/大题">解答题/大题</option>
+            <option value="简答题">简答题</option>
+          </select>
+        </label>
+
+        <label>
+          题目图片
+          <input id="imageInput" type="file" accept="image/*" required>
+        </label>
+        <img id="imagePreview" class="image-preview hidden" alt="题目图片预览">
+
+        <label>
+          错误知识点
+          <input id="knowledgeInput" type="text" placeholder="例如：一次函数图像" required>
+        </label>
+
+        <label>
+          错误原因
+          <textarea id="reasonInput" rows="3" placeholder="写清楚当时为什么做错" required></textarea>
+        </label>
+
+        <label>
+          正确思路/解析
+          <textarea id="solutionInput" rows="4" placeholder="写下正确做法、关键步骤或老师讲解" required></textarea>
+        </label>
+
+        <label>
+          复习状态
+          <select id="statusInput" required>
+            <option value="未复习">未复习</option>
+            <option value="已复习">已复习</option>
+            <option value="仍不会">仍不会</option>
+          </select>
+        </label>
+
+        <div class="form-actions">
+          <button type="submit" class="primary-button">保存错题</button>
+          <button type="button" id="cancelFormBtn" class="ghost-button">取消</button>
+        </div>
+      </form>
+
+      <div id="emptyMessage" class="empty-message hidden">
+        这个科目还没有错题，先添加一道试试。
+      </div>
+
+      <div id="questionList" class="question-list"></div>
+    </section>
+
+    <section id="detailView" class="hidden">
+      <div class="section-title">
+        <div>
+          <h2>错题详情</h2>
+          <p id="detailMeta"></p>
+        </div>
+        <button id="backSubjectBtn" class="ghost-button">返回列表</button>
+      </div>
+
+      <article class="detail-card">
+        <img id="detailImage" class="detail-image" alt="题目图片">
+        <dl>
+          <div>
+            <dt>科目</dt>
+            <dd id="detailSubject"></dd>
+          </div>
+          <div>
+            <dt>题型</dt>
+            <dd id="detailType"></dd>
+          </div>
+          <div>
+            <dt>错误知识点</dt>
+            <dd id="detailKnowledge"></dd>
+          </div>
+          <div>
+            <dt>错误原因</dt>
+            <dd id="detailReason"></dd>
+          </div>
+          <div>
+            <dt>正确思路/解析</dt>
+            <dd id="detailSolution"></dd>
+          </div>
+          <div>
+            <dt>复习状态</dt>
+            <dd id="detailStatus"></dd>
+          </div>
+          <div>
+            <dt>添加时间</dt>
+            <dd id="detailCreatedAt"></dd>
+          </div>
+        </dl>
+        <div class="detail-actions">
+          <button class="ghost-button" type="button" disabled>编辑（下一版）</button>
+          <button class="ghost-button danger-button" type="button" disabled>删除（下一版）</button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
